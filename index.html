@@ -1,19 +1,83 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Portfolio – Henning Gregusson</title>
+  <meta name="description" content="Engineering projects by Henning Gregusson, MSc student in structural engineering at NTNU.">
+  <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
-  <h1>hello</h1>
-  <p>I study civil engineering and like building things.</p>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="./">Project Portfolio – Henning Gregusson</a></h1>
+      <nav class="site-nav">
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+        <a href="https://github.com/hennindg">GitHub</a>
+      </nav>
+    </div>
+  </header>
 
-  <h2>Projects</h2>
-  <ul>
-    <li>Project one: TBA</li>
-    <li>Project two: TBA</li>
-  </ul>
+  <main>
+    <div class="container">
+      <section class="intro">
+        <h1>Structural dynamics, monitoring and code</h1>
+        <p>I am an MSc student in structural engineering at NTNU. I like building things – and
+          finding out how real structures behave, from full-scale measurements rather than only from models.</p>
+      </section>
 
-  <h2>Contact</h2>
-  <p>Email: henning.gregusson@gmail.com</p>
+      <!-- Category filters: one button per category used in data-category below -->
+      <div class="category-filters" id="projects">
+        <button class="category-btn active" data-category="all">All</button>
+        <button class="category-btn" data-category="python">Python</button>
+        <button class="category-btn" data-category="dynamics">Structural dynamics</button>
+        <button class="category-btn" data-category="data">Data analysis</button>
+      </div>
+
+      <section class="projects-grid">
+
+        <article class="project-card" data-category="python dynamics data">
+          <a href="projects/hardanger-oma/" class="card-link">
+            <div class="card-image">
+              <img src="assets/images/hardanger-oma/stabilization_diagram.png" alt="Stabilization diagram from the Hardanger Bridge analysis">
+            </div>
+            <div class="card-content">
+              <h2 class="card-title">Operational Modal Analysis of the Hardanger Bridge</h2>
+              <p class="card-description">A fully automatic pipeline that identifies ~25 vibration modes of a 1310 m
+                suspension bridge from 1,485 wind-triggered recordings, separates wind and temperature effects,
+                measures aerodynamic damping and tests how small a stiffness loss could be detected.</p>
+              <div class="card-tools">
+                <span class="tool-tag">Python</span>
+                <span class="tool-tag">NumPy / SciPy</span>
+                <span class="tool-tag">SSI-cov</span>
+                <span class="tool-tag">Statistics</span>
+                <span class="tool-tag">pytest</span>
+              </div>
+            </div>
+          </a>
+        </article>
+
+        <!-- To add a project: copy the <article> above, change the link, image, text and categories,
+             and make a folder projects/<name>/ with an index.html (copy projects/hardanger-oma/). -->
+        <article class="project-card card-placeholder" data-category="">
+          <div class="card-image">Coming soon</div>
+          <div class="card-content">
+            <h2 class="card-title">Next project</h2>
+            <p class="card-description">More projects will be added here.</p>
+          </div>
+        </article>
+
+      </section>
+
+      <section class="contact" id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:henning.gregusson@gmail.com">henning.gregusson@gmail.com</a><br>
+          GitHub: <a href="https://github.com/hennindg">github.com/hennindg</a></p>
+      </section>
+    </div>
+  </main>
+
+  <script src="assets/js/filter.js"></script>
 </body>
 </html>

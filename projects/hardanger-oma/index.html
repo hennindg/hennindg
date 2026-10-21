@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardanger Bridge OMA – Henning Gregusson</title>
+  <meta name="description" content="Automatic operational modal analysis of the Hardanger Bridge from 1,485 full-scale recordings.">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="../../">Project Portfolio – Henning Gregusson</a></h1>
+      <nav class="site-nav">
+        <a href="../../#projects">Projects</a>
+        <a href="../../#contact">Contact</a>
+        <a href="https://github.com/hennindg">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <h1>Operational Modal Analysis of the Hardanger Bridge</h1>
+          <p class="lead">An automatic pipeline that turns 1,485 thirty-minute acceleration recordings of a
+            1310 m suspension bridge into natural frequencies, damping ratios and mode shapes – and uses them to
+            study wind effects and damage detection.</p>
+          <p>The Hardanger Bridge is instrumented with 20 accelerometers and 9 anemometers. I wrote the full
+            analysis chain from scratch in Python: covariance-driven stochastic subspace identification (SSI-cov),
+            automatic picking of stable poles by clustering, mode tracking across four years of data (2013–2018), regression
+            on wind and temperature, and statistical novelty detection. Every step is validated – against
+            simulated structures with known properties, against an independent identification from the literature,
+            and against changes in its own settings.</p>
+
+          <ul class="highlights">
+            <li><strong>Fully automatic identification:</strong> ~25 modes per recording (0.05–0.95 Hz) with no manual
+              input; frequencies agree with an independent study (Petersen &amp; Øiseth 2017) within −1.2 to +0.3 %.</li>
+            <li><strong>Wind and temperature separated:</strong> frequencies drop 0.02–0.07 % per °C; vertical
+              frequencies rise with U² – traced to the static wind load on the cable system.</li>
+            <li><strong>Aerodynamic damping at full scale:</strong> the damping of all 13 vertical modes collapses onto
+              one curve against reduced velocity, close to the quasi-steady wind-tunnel prediction.</li>
+            <li><strong>Damage detection limits:</strong> after removing environmental effects, a Hotelling T² chart
+              detects a uniform 1.1 % frequency drop in 90 % of single recordings – about a 3.5 % loss of cable
+              stiffness, while local girder damage would go unnoticed.</li>
+            <li><strong>Checking the method itself:</strong> found with simulations that SSI-cov underestimates high
+              damping on 30-minute records, and built a calibrated simulated twin of every recording to correct it.</li>
+          </ul>
+
+          <p class="section-label">Tools</p>
+          <div class="tools-list">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">NumPy</span>
+            <span class="tool-tag">SciPy</span>
+            <span class="tool-tag">Matplotlib</span>
+            <span class="tool-tag">pytest</span>
+            <span class="tool-tag">GitHub Actions</span>
+            <span class="tool-tag">Block bootstrap</span>
+          </div>
+
+          <div class="button-row">
+            <a class="button" href="https://github.com/hennindg/hardanger-oma">Code on GitHub</a>
+            <a class="button secondary" href="https://github.com/hennindg/hardanger-oma/blob/main/docs/report.md">Technical report</a>
+          </div>
+        </div>
+
+        <div>
+          <img src="../../assets/images/hardanger-oma/stabilization_diagram.png"
+               alt="Stabilization diagram: model order against frequency, with the automatically picked modes">
+        </div>
+      </section>
+
+      <section class="details">
+        <h2>Visual Details</h2>
+        <div class="figure-grid">
+          <figure>
+            <img src="../../assets/images/hardanger-oma/reduced_velocity_test.png" alt="Aerodynamic damping against reduced velocity">
+            <figcaption><strong>Aerodynamic damping</strong>Damping of all vertical modes minus the structural part,
+              against reduced velocity U/(Bω). The full-scale data follow the quasi-steady wind-tunnel line without any fitted parameter.</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/images/hardanger-oma/regression_frequency.png" alt="Frequency against wind speed and temperature">
+            <figcaption><strong>Wind and temperature</strong>Effect of mean wind speed and of temperature on the
+              frequency of every mode, from a multiple regression per mode (bars: ±2 standard errors).</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/images/hardanger-oma/novelty_detection.png" alt="Hotelling T-squared control chart">
+            <figcaption><strong>Novelty detection</strong>Frequencies normalized for wind and temperature, monitored
+              with a Hotelling T² control chart, and the frequency drop that would be detected.</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/images/hardanger-oma/cable_girder_model.png" alt="Cable–girder model fit">
+            <figcaption><strong>Cable–girder model</strong>A deflection-theory beam-and-cable model fitted to the
+              measured frequencies reproduces almost all vertical modes within ±0.4 %, and turns frequency drops into stiffness losses.</figcaption>
+          </figure>
+          <figure>
+            <img src="../../assets/images/hardanger-oma/block_rows_simulation.png" alt="Damping bias of SSI-cov in simulation">
+            <figcaption><strong>Checking the method</strong>Simulated bridge records with known damping reveal a
+              finite-record bias in the identified damping that grows with the number of block rows.</figcaption>
+          </figure>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:18px">Data: <em>Wind and Acceleration Data from the Hardanger Bridge</em>, NTNU,
+          DOI <a href="https://doi.org/10.21400/5ng8980s">10.21400/5ng8980s</a>, CC-BY 4.0.</p>
+      </section>
+
+      <a class="back-link" href="../../">← Back to Projects</a>
+    </div>
+  </main>
+</body>
+</html>
