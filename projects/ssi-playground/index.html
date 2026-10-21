@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SSI-cov Playground – Henning Gregusson</title>
+  <meta name="description" content="Stochastic subspace identification running in the browser, on a simulated girder with known modes.">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-title"><a href="../../">Project Portfolio – Henning Gregusson</a></h1>
+      <nav class="site-nav">
+        <a href="../../#projects">Projects</a>
+        <a href="../../#contact">Contact</a>
+        <a href="https://github.com/hennindg">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="project-hero">
+        <div>
+          <h1>SSI-cov Playground</h1>
+          <p class="lead">Stochastic subspace identification running in the browser, on a simulated girder with
+            known modes.</p>
+          <p>An interactive version of the identification method from my Hardanger Bridge analysis. You choose the
+            modes (frequency and damping), the number of sensors, the noise, the record length and the SSI settings.
+            The page simulates the accelerations, identifies the modes with covariance-driven SSI and automatic mode
+            picking, and compares the result with the true values. The computation is Python and NumPy, run in the
+            browser with Pyodide. The plots are written directly in SVG, without a chart library.</p>
+
+          <ul class="highlights">
+            <li>Stabilization diagram, mode shapes, and a table of identified against true frequency, damping and
+              MAC. One record takes about half a second.</li>
+            <li>Running 20 records with the same settings shows the bias of the damping estimate. For the mode with
+              3.5 % damping, the mean error over the same 21 records was −0.39 %-points with 30 block rows and
+              −0.83 with 120.</li>
+            <li>The bias shrinks with longer records (from −1.2 to −0.2 %-points between 30 and 180 minutes, at 120
+              block rows), so it is a finite-record effect. It is the same bias I had to correct in the Hardanger
+              damping estimates.</li>
+            <li>Each mode is simulated exactly in discrete time, so the true frequency and damping are known exactly.
+              Tests check the identification against them.</li>
+          </ul>
+
+          <p class="section-label">Tools</p>
+          <div class="tools-list">
+            <span class="tool-tag">Python</span>
+            <span class="tool-tag">NumPy</span>
+            <span class="tool-tag">Pyodide</span>
+            <span class="tool-tag">JavaScript</span>
+            <span class="tool-tag">SVG</span>
+            <span class="tool-tag">HTML / CSS</span>
+            <span class="tool-tag">pytest</span>
+          </div>
+
+          <div class="button-row">
+            <a class="button" href="https://hennindg.github.io/ssi-playground/">Open the playground</a>
+            <a class="button secondary" href="https://github.com/hennindg/ssi-playground">Code on GitHub</a>
+          </div>
+        </div>
+
+        <div>
+          <a href="https://hennindg.github.io/ssi-playground/">
+            <img class="screenshot" src="../../assets/images/ssi-playground/hero.png"
+                 alt="The playground: mode and SSI settings on the left, the simulated record and the stabilization diagram on the right">
+          </a>
+        </div>
+      </section>
+
+      <section class="details">
+        <h2>Figures</h2>
+        <div class="figure-grid">
+          <figure>
+            <img class="screenshot" src="../../assets/images/ssi-playground/stabilization.png" alt="Stabilization diagram with the true frequencies">
+            <figcaption><strong>Stabilization diagram</strong>Poles at model orders 2–60. Blue poles are stable from
+              one order to the next, orange lines are the true frequencies, and the shaded curve is the first singular
+              value of the spectral matrix.</figcaption>
+          </figure>
+          <figure>
+            <img class="screenshot" src="../../assets/images/ssi-playground/shapes.png" alt="Identified and true mode shapes">
+            <figcaption><strong>Mode shapes</strong>Identified mode shapes at the nine sensors against the true sine
+              shapes, with the MAC between them.</figcaption>
+          </figure>
+          <figure>
+            <img class="screenshot" src="../../assets/images/ssi-playground/damping_rows30.png" alt="Identified damping of 21 records with 30 block rows">
+            <figcaption><strong>Damping, 30 block rows</strong>Identified damping of 21 simulated 30-minute records.
+              Orange: true value, white: mean, bias below. Mode 5 was found in 18 of the 21 records.</figcaption>
+          </figure>
+          <figure>
+            <img class="screenshot" src="../../assets/images/ssi-playground/damping_rows120.png" alt="Identified damping of the same 21 records with 120 block rows">
+            <figcaption><strong>Damping, 120 block rows</strong>The same 21 records identified with 120 block rows.
+              The damping of the more heavily damped modes is underestimated more.</figcaption>
+          </figure>
+        </div>
+        <p style="font-size:0.8rem;color:var(--muted);margin-top:18px">Method: Peeters, B. &amp; De Roeck, G. (1999).
+          Reference-based stochastic subspace identification for output-only modal analysis. <em>Mechanical Systems
+          and Signal Processing</em>, 13(6), 855–878.</p>
+      </section>
+
+      <a class="back-link" href="../../">← Back</a>
+    </div>
+  </main>
+</body>
+</html>
