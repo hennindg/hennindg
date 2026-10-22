@@ -123,7 +123,7 @@ a { color: var(--accent); }
 .project-hero img { width: 100%; background: white; padding: 8px; }
 .highlights { list-style: none; padding: 0; margin: 18px 0; }
 .highlights li { border-left: 3px solid var(--accent); padding: 2px 0 2px 12px; margin-bottom: 12px; font-size: 0.92rem; }
-/* Screenshots of dark pages (SSI playground): no white frame */
+/* Screenshots of dark pages (Interactive SSI-cov): no white frame */
 .project-hero img.screenshot, .figure-grid img.screenshot { background: #0e0e10; padding: 0; }
 .section-label { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin: 26px 0 8px; }
 .button-row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
